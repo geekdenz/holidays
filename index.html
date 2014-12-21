@@ -15,19 +15,26 @@ var $$ = function(selector) { return document.querySelectorAll(selector) },
     w = window.innerWidth,
     h = window.innerHeight,
     halfW = w/2,
-    halfH = h/2;
+    halfH = h/2,
+    golden = (1+Math.sqrt(5))/2,
+    goldenBy5 = golden/5;
 body.appendChild(c);
 var ctx = c.getContext('2d');
 c.width = w;
 c.height = h;
 ctx.fillStyle = '#0a290a';
-var branch = function(fromX, fromY) {
+var branch = function(fromX, fromY, offsetBranch, factor) {
     ctx.moveTo(fromX,fromY);
-    ctx.bezierCurveTo(fromX+200,fromY+25,fromX+250,fromY+50,fromX,fromY+50);
+    ctx.bezierCurveTo(fromX+factor*offsetBranch,fromY+25,fromX+factor*(50+offsetBranch),fromY+50,fromX,fromY+50);
     ctx.fill();
 };
 
-branch(halfW, 
+for (var i=1; i<9; ++i) {
+    branch(halfW,h*i/10, (i-1)*40,1);
+}
+for (var i=1; i<9; ++i) {
+    branch(halfW,h*i/10, (i-1)*40,-1);
+}
 </script>
     </body>
 </html>
