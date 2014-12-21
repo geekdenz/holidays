@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Holliday Tree</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+<script>
+var $$ = function(selector) { return document.querySelectorAll(selector) },
+    $ = function(selector) { return document.querySelector(selector) },
+    c = document.createElement('canvas'),
+    body = $('body'),
+    w = window.innerWidth,
+    h = window.innerHeight,
+    halfW = w/2,
+    halfH = h/2;
+body.appendChild(c);
+var ctx = c.getContext('2d');
+c.width = w;
+c.height = h;
+ctx.fillStyle = '#0a290a';
+var branch = function(fromX, fromY) {
+    ctx.moveTo(fromX,fromY);
+    ctx.bezierCurveTo(fromX+200,fromY+25,fromX+250,fromY+50,fromX,fromY+50);
+    ctx.fill();
+};
+
+branch(halfW, 
+</script>
+    </body>
+</html>
